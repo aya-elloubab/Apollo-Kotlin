@@ -1,0 +1,77 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/item_background"
+    android:layout_margin="8dp"
+    android:elevation="4dp">
+
+    <!-- Display Compte ID -->
+    <TextView
+        android:id="@+id/compte_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID: 123"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_dark"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Display Solde -->
+    <TextView
+        android:id="@+id/compte_solde"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Solde: 1000"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Display Date Creation -->
+    <TextView
+        android:id="@+id/compte_date_creation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: 2024-11-28"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Display Type -->
+    <TextView
+        android:id="@+id/compte_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type: Checking"
+        android:textSize="16sp" />
+
+
+    <!-- Boutons Modifier et Supprimer -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <!-- Bouton Modifier -->
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Modifier"
+            android:textColor="@android:color/white"
+            android:background="@color/primary_color"
+            android:layout_marginEnd="4dp" />
+
+        <!-- Buttons for Edit and Delete -->
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/error_color"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+
+</LinearLayout>
