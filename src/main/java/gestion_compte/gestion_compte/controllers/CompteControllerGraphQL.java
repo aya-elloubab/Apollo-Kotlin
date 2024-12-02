@@ -1,14 +1,20 @@
 package gestion_compte.gestion_compte.controllers;
 
 import gestion_compte.gestion_compte.entities.Compte;
+import gestion_compte.gestion_compte.entities.CompteRequest;
 import gestion_compte.gestion_compte.entities.TypeCompte;
 import gestion_compte.gestion_compte.repositories.CompteRepository;
 import graphql.language.Argument;
 import lombok.AllArgsConstructor;
+import org.springframework.expression.ParseException;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.graphql.data.method.annotation.*;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -35,9 +41,22 @@ public class CompteControllerGraphQL {
     }
 
     @MutationMapping
-    public Compte saveCompte(@org.springframework.graphql.data.method.annotation.Argument Compte compte) {
-        return compteRepository.save (compte) ;
+    public Compte saveCompte(@org.springframework.graphql.data.method.annotation.Argument("compte") CompteRequest compteRequest) {
+        Compte compte = new Compte();
+        compte.setSolde(compteRequest.getSolde());
+
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = dateFormat.parse(compteRequest.getDateCreation());
+            compte.setDateCreation(date);
+        } catch (ParseException | java.text.ParseException e) {
+            throw new RuntimeException("Invalid date format, expected yyyy-MM-dd");
+        }
+
+        compte.setType(compteRequest.getType());
+        return compteRepository.save(compte);
     }
+
 
     @MutationMapping
     public String deleteCompte(@org.springframework.graphql.data.method.annotation.Argument Long id) {

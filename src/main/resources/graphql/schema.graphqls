@@ -23,12 +23,13 @@ type Mutation {
     deleteCompte(id: ID): String
 }
 
+
 input CompteRequest {
+    id: ID
     solde: Float
     dateCreation: String
     type: TypeCompte
 }
-
 type SoldeStats {
     count: Int
     sum: Float
